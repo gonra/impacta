@@ -1,13 +1,12 @@
 package com.atos.controller;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.atos.dao.ProfessorDao;
+import com.atos.dao.EntitiesDao;
 import com.atos.model.Endereco;
 import com.atos.model.Professor;
 
@@ -17,7 +16,7 @@ public class ProfessorController {
 
 	private Professor professorBean = new Professor();
 	
-	private ProfessorDao professorDao = new ProfessorDao();
+	private EntitiesDao professorDao = new EntitiesDao();
 	
 	
 	public Professor getProfessorBean() {
@@ -30,14 +29,14 @@ public class ProfessorController {
 
 	public List<Professor> getListaProfessor() {
 		List<Professor> lista = new ArrayList<>();
-		for(Professor professor: professorDao.listar()) {
+		for(Professor professor: professorDao.listarProfessor()) {
 			lista.add(professor);
 		}
 		return lista;
 	}
 
 	public String salvar() {
-		Integer id = professorDao.salvar(professorBean);
+		Integer id = professorDao.salvarProfessor(professorBean);
 		limpar();
 		
 		return "";
@@ -57,7 +56,7 @@ public class ProfessorController {
 	
 	public String deletar(Professor prof) {
 		int id = prof.getId();
-		professorDao.deletar(prof);	
+		professorDao.deletarProfessor(prof);	
 
 		return "";
 	}

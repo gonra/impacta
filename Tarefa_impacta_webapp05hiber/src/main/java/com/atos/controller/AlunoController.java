@@ -6,7 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.atos.dao.AlunoDao;
+import com.atos.dao.EntitiesDao;
 import com.atos.model.Aluno;
 import com.atos.model.Endereco;
 
@@ -16,7 +16,7 @@ public class AlunoController {
 
 	private Aluno alunoBean = new Aluno();
 
-	private AlunoDao alunoDao = new AlunoDao();
+	private EntitiesDao alunoDao = new EntitiesDao();
 
 	public Aluno getAlunoBean() {
 		return alunoBean;
@@ -28,14 +28,14 @@ public class AlunoController {
 
 	public List<Aluno> getListaAluno() {
 		List<Aluno> lista = new ArrayList<>();
-		for(Aluno aluno: alunoDao.listar()) {
+		for(Aluno aluno: alunoDao.listarAluno()) {
 			lista.add(aluno);
 		}
 		return lista;
 	}
 
 	public String salvar() {
-		Integer id = alunoDao.salvar(alunoBean);
+		Integer id = alunoDao.salvarAluno(alunoBean);
 		limpar();
 
 		return "";
@@ -55,7 +55,7 @@ public class AlunoController {
 
 	public String deletar(Aluno aluno) {
 		int alunoId = aluno.getId();
-		alunoDao.deletar(aluno);	
+		alunoDao.deletarAluno(aluno);	
 		return "";
 	}
 
