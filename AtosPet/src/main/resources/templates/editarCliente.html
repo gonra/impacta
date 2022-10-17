@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
+	media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Welcome AtosPet</title>
+</head>
+<body>
+<nav class="blue darken-1">
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo right">AtosPet<img src="/img/logo.png" width="60" height="60"></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/cliente">Cadastro cliente</a></li>
+        <li><a href="/cliente/lista">Lista cliente</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+	<div class="col s4 offset-s1"><h4>Editar Cliente</h4></div>
+  </div>  
+	<div class="container">
+		<div class="row">
+			<form method="post" class="col s12">			    
+			    <input type="hidden" name="endereco.id" th:value="${endereco.id}"/>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="nomeId" name="nome" th:value="${cliente.nome}" type="text"> <label
+							for="nomeId">Nome:</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="text" id="cpfId" th:value="${cliente.cpf}" name="cpf"> <label
+							for="cpfId">CPF:</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="text" id="idadeId" th:value="${cliente.idade}" name="idade"> <label
+							for="idadeId">Idade:</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s3">
+						<input type="text" id="enderecoRuaId" th:value="${endereco.rua}" name="endereco.rua"> <label
+							for="enderecoRuaId">Endereço[Rua]:</label>
+					</div>
+
+					<div class="input-field col s3">
+						<input type="text" id="enderecoCasaId" th:value="${endereco.casa}" name="endereco.casa"> <label
+							for="enderecoCasaId">Endereço[Casa]:</label>
+					</div>
+
+					<div class="input-field col s3">
+						<input type="text" id="enderecoCidadeId" th:value="${endereco.cidade}" name="endereco.cidade"> <label
+							for="enderecoCidadeId">Endereço[Cidade]:</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s6">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">
+							Salvar <i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+</body>
+</html>
