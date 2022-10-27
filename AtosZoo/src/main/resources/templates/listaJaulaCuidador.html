@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"
+	media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>AtosZoo</title>
+</head>
+<body>
+ <div class="navbar-fixed">
+<ul id="menuCuidador" class="dropdown-content">
+  <li><a href="/cuidador/lista">Lista Cuidador</a></li>
+  <li><a href="/cuidador">Cadastro Cuidador</a></li>
+</ul>
+<ul id="menuJaula" class="dropdown-content">
+  <li><a href="/jaula/lista">Lista Jaula</a></li>
+  <li><a href="/jaula">Cadastro Jaula</a></li>
+</ul>
+<ul id="menuAnimal" class="dropdown-content">
+  <li><a href="/animal/lista">Lista Animal</a></li>
+  <li><a href="/animal">Cadastro Animal</a></li>
+</ul>
+	<nav class="blue darken-1">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo right">Atos|Zoo<img
+				src="/img/logo.png" width="60" height="60"></a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a class="dropdown-trigger" href="#!" data-target="menuCuidador">Cuidador________<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="menuJaula">Jaula________<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="menuAnimal">Animal________<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<div class="row">
+		<div class="col s4 offset-s1">
+			<h4>
+				Lista jaula de <span th:text="${cuidador.nome}" />
+			</h4>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<table>
+					<thead>
+						<tr>
+							<th>Nome Zoologico</th>
+							<th>Bloco</th>
+							<th>Numero Jaula</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item:${cuidador.listaJaulas}">
+							<td><span th:text="${item.nomeZoologico}"></span></td>
+							<td><span th:text="${item.bloco}"></span></td>
+							<td><span th:text="${item.numeroJaula}"></span></td>
+							<td style="text-align:right"> <a
+								th:href="@{'/cuidador/'+${cuidador.id}+'/jaula/'+${item.id}+'/delete'}"
+								class="waves-effect waves-light btn"
+								onclick="return confirm('Tem certeza?')"> <i
+									class="material-icons left">delete</i>Eliminar
+							</a> <a th:href="@{'/jaula/'+${item.id}+'/lista'}"
+								class="waves-effect waves-light btn"> <i
+									class="material-icons left">control_point_duplicate</i>Animais
+							</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	    <div class="row">
+	        <div class="col s12">
+	          <form method="post">
+	          <div class="row" >
+					<div class="col s6">
+					    <label for="jaulaId">Numero Jaula:</label>
+						<select id="jaulaId" name="idJaula" class="browser-default">
+						    <option value="" selected disabled>Escolha</option>
+  							<option th:each="item : ${listaJaula}" 
+          							th:value="${item.id}" 
+          							th:text="${item.numeroJaula}">Jaula</option>
+						</select>	
+						
+					</div>
+					<div class="input-field col s6">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">
+							Adicionar Jaula<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+	          </form>
+	        </div>
+	    </div>
+	</div>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		var drop=document.querySelectorAll('.dropdown-trigger');
+		M.Dropdown.init(drop);
+	})
+	</script>
+</body>
+</html>
