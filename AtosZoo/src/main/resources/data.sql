@@ -31,3 +31,13 @@ insert into tbl_animal values (7,DATE '2021-05-18','MACACO','PAN','MICO',2);
 ALTER SEQUENCE cuidador_seq RESTART WITH 5;
 ALTER SEQUENCE animal_seq RESTART WITH 8;
 ALTER SEQUENCE jaula_seq RESTART WITH 7;
+
+
+insert into tbl_user values (X'f5c31d4c4ed44039833fecc5ed0f4751', '$2a$10$SdyuCfSHiBuLpRqprVNCFOI47PpGy.hS7.Vq6XX0TOVxVowytaRMm','admin');
+insert into tbl_user values (X'883bc2e7cebf4f4b96089c22af687b03', '$2a$10$SdyuCfSHiBuLpRqprVNCFOI47PpGy.hS7.Vq6XX0TOVxVowytaRMm','user');
+
+insert into tbl_role values (X'f43608f5694140d5a4490edf04e5f5da', 'ROLE_ADMIN');
+insert into tbl_role values (X'97ae9e7e9f0f41f4bbc8afebe0b85650', 'ROLE_USER');
+
+insert into tb_users_roles values (X'f5c31d4c4ed44039833fecc5ed0f4751',X'f43608f5694140d5a4490edf04e5f5da');
+insert into tb_users_roles values (X'883bc2e7cebf4f4b96089c22af687b03',X'97ae9e7e9f0f41f4bbc8afebe0b85650');

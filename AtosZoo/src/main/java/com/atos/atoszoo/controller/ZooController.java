@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ZooController {
 
 	@RequestMapping(value="/",method=RequestMethod.GET)
-	public String showJaula() {
-		return "redirect:/cuidador/lista";
+	public String showIndex() {
+		return "redirect:/login";
 	}
+
 }

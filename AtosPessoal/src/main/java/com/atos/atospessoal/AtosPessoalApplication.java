@@ -1,14 +1,13 @@
-package com.atos.atoszoo;
+package com.atos.atospessoal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class AtosZooApplication {
+public class AtosPessoalApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AtosZooApplication.class, args);
+		SpringApplication.run(AtosPessoalApplication.class, args);
 	}
 
 }
