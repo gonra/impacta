@@ -1,0 +1,37 @@
+<table mat-table [dataSource]="listaElementos" class="mat-elevation-z8" *ngIf="(enTela == 0)">
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="profissao">
+      <th mat-header-cell *matHeaderCellDef> Profissao </th>
+      <td mat-cell *matCellDef="let element"> {{element.profissao}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="idade">
+      <th mat-header-cell *matHeaderCellDef> Idade </th>
+      <td mat-cell *matCellDef="let element"> {{element.idade}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar-deletar">
+      <th mat-header-cell *matHeaderCellDef> _ </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-button color="primary" (click)="openEdit(element.id)">Editar</button> - 
+        <button mat-button color="warn" (click)="openDelete(element.id)">Deletar</button> 
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div *ngIf="(enTela == 1)">
+    
+  </div>
+  <div *ngIf="(enTela == 2)">
+    <p>Tem certeza?</p>
+    <div>
+        <button (click)="deletar()">Deletar</button> - <button (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>

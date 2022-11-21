@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <a href="#" (click)="toList()">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          ZooAtos
+        </a>
+        <span class="example-spacer"> </span>
+        <a href="#" color="primary" mat-raised-button (click)="toEditor()">Adicionar</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+<app-lista-cuidadores *ngIf="(cuidadoresService.getEtapa() == 1)"></app-lista-cuidadores>
+<app-add-cuidador *ngIf="(cuidadoresService.getEtapa() == 2)"></app-add-cuidador>
+

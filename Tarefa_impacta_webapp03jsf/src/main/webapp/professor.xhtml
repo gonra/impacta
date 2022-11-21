@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro professor</title>
+</h:head>
+<h:body>
+  
+  <h3><h:outputLabel value="Formulario cadastro professor"/></h3>
+  <h:form>
+    <div><h:outputLabel value="Nome:"/><h:inputText name="nomeText" value="#{professor.professorBean.nome}"/></div>
+    <div><h:outputLabel value="CPF:"/><h:inputText name="cpfText" value="#{professor.professorBean.cpf}"/></div>
+    <div><h:outputLabel value="Endereco= Rua:"/><h:inputText name="enderecoRuaText" value="#{professor.professorBean.endereco.rua}"/>
+    <h:outputLabel value=", Casa:"/><h:inputText name="enderecoCasaText" value="#{professor.professorBean.endereco.casa}"/>
+    <h:outputLabel value=", Cidade:"/><h:inputText name="enderecoCidadeText" value="#{professor.professorBean.endereco.cidade}"/></div>
+    <div><h:outputLabel value="Disciplina:"/><h:inputText name="disciplinaText" value="#{professor.professorBean.disciplina}"/></div>
+    <div><h:outputLabel value="Salario:"/><h:inputText name="salarioText" value="#{professor.professorBean.salario}"/></div>
+    
+    <div>
+      <h:commandButton value="Enviar" action="#{professor.salvar}" /> | 
+      <h:commandButton value="Voltar" action="index.xhtml" /> |
+      <h:commandButton value="Novo" action="#{professor.limpar}"  />
+    </div>
+  
+  
+  <br/>
+  <hr/>
+  <br/>
+   <h:dataTable value="#{professor.listaProfessor}" var="aItem" border="1" id="tablelaprofessor">
+    <h:column>
+      <f:facet name="header">Nome</f:facet>
+      #{aItem.nome}  
+    </h:column>
+    <h:column>
+      <f:facet name="header">CPF</f:facet>
+      #{aItem.cpf}  
+    </h:column>
+    <h:column>
+      <f:facet name="header">Endereco</f:facet>
+      #{aItem.endereco} 
+    </h:column>
+    <h:column>
+      <f:facet name="header">Disciplina</f:facet>
+      #{aItem.disciplina}  
+    </h:column>
+    <h:column>
+      <f:facet name="header">Salario</f:facet>
+      #{aItem.salario}  
+    </h:column>
+    <h:column>
+      <f:facet name="header">x - x</f:facet>
+       <h:commandButton action="#{professor.editar(aItem)}" value="Editar"/> /
+       <h:commandButton onclick="return confirm('Tem certeza?')" 
+                      action="#{professor.deletar(aItem)}" value="Deletar"/>  
+    </h:column>
+  </h:dataTable>
+  </h:form>
+</h:body>
+</html>
